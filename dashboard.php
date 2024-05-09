@@ -25,7 +25,7 @@
                 <?php
             }
         } else {
-            ?><p>Tidak ada informasi untuk saat ini.</p><?php
+            ?><p class="fs-5">Tidak ada informasi untuk saat ini.</p><?php
         }
         ?>
         <!-- <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-2">
