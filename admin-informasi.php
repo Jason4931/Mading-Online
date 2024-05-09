@@ -119,7 +119,7 @@
             </a>
         </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-2">
-            <a href="?menu=damin-informasi">
+            <a href="?menu=admin-informasi">
                 <div class="card bg-dark text-white hover-scale">
                     <img class="card-img" src="./Image/CardImage.png" alt="Card image" style="min-height: 200px;">
                     <img class="card-img-overlay p-0 w-100 h-100" src="./Image/DarkEff.png">

@@ -29,6 +29,7 @@
             }
         </style>
         <?php
+            date_default_timezone_set("Asia/Jakarta");
             $servername = "localhost";
             $username = "root";
             $password = "";
@@ -43,6 +44,24 @@
         ?>
     </head>
     <?php
+    function tgl_indo($date){
+        $bulan = array (
+            1 => 'Januari',
+            'Februari',
+            'Maret',
+            'April',
+            'Mei',
+            'Juni',
+            'Juli',
+            'Agustus',
+            'September',
+            'Oktober',
+            'November',
+            'Desember'
+        );
+        $string = explode('-', $date);
+        return $string[2] . ' ' . $bulan[(int)$string[1]] . ' ' . $string[0];
+    }
     if(isset($_POST['Nama']) && isset($_POST['Pass'])) {
         $sql = "SELECT * FROM `akun` WHERE `username`='$_POST[Nama]' AND `password`='$_POST[Pass]'";
         $result = $conn->query($sql);
@@ -53,6 +72,33 @@
         }
         else {
             $fail = "Akun tidak ditemukan atau Password salah!";
+        }
+    }
+    if(isset($_POST['like'])) {
+        $name="like".$_POST["id"];
+        setcookie($name, 1, time() + (86400 * 7)); // 86400 = 1 day
+        $likes=$_POST['likevalue']+1;
+        $sql = "UPDATE `informasi` SET `like`='$likes' WHERE `id`='$_POST[id]'";
+        $result = $conn->query($sql);
+        if ($result) {
+            header("Location: ./?menu=informasi&id=$_POST[id]");
+        }
+    } else if(isset($_POST['dislike'])) {
+        $name="like".$_POST["id"];
+        setcookie($name, 0, time() - (86400 * 7)); // delete
+        $likes=$_POST['likevalue']-1;
+        $sql = "UPDATE `informasi` SET `like`='$likes' WHERE `id`='$_POST[id]'";
+        $result = $conn->query($sql);
+        if ($result) {
+            header("Location: ./?menu=informasi&id=$_POST[id]");
+        }
+    }
+    if(isset($_POST['comment'])) {
+        $today = date("Y-m-d");
+        $sql="INSERT INTO `komentar` (`informasi_id`, `nama`, `tanggal`, `komentar`) VALUES ('$_POST[id]', '$_POST[nama]', '$today', '$_POST[comment]')";
+        $result = $conn->query($sql);
+        if ($result) {
+            header("Location: ./?menu=informasi&id=$_POST[id]");
         }
     }
     ?>
@@ -90,7 +136,7 @@
                 include "informasi.php";
                 break;
             case "riwayat":
-                $active="riwayat";
+                $active="dashboard";
                 include "header.php";
                 include "riwayat.php";
                 break;

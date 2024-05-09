@@ -5,13 +5,13 @@
     <hr class="d-inline-block float-end w-25 d-block d-sm-none">
     <div class="row mb-3">
         <?php
-        $sql = "SELECT * FROM `informasi` WHERE `kategori`='pendaftaran' ORDER BY `tanggal` DESC";
+        $sql = "SELECT * FROM `informasi` WHERE `kategori`='pendaftaran' ORDER BY `tanggal` ASC";
         $result = $conn->query($sql);
         if (mysqli_num_rows($result)>0) {
             while($row = $result->fetch_assoc()) {
                 ?>
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-2">
-                    <a href="?menu=informasi">
+                    <a href="?menu=informasi&id=<?=$row['id']?>">
                         <div class="card bg-dark text-white hover-scale">
                             <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gambar']).'" alt="Card image" style="height: 300px;">'; ?>
                             <img class="card-img-overlay p-0 w-100 h-100" src="./Image/DarkEff.png">
