@@ -25,11 +25,21 @@
                 <?php
             }
         } else {
-            ?>
-            <p>Tidak ada informasi untuk saat ini.</p>
-            <?php
+            ?><p>Tidak ada informasi untuk saat ini.</p><?php
         }
         ?>
+        <!-- <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-2">
+            <a href="#">
+                <div class="card bg-dark text-white hover-scale">
+                    <img class="card-img" src="./Image/Logo-BG.png" alt="Card image" style="height: 300px;">
+                    <img class="card-img-overlay p-0 w-100 h-100" src="./Image/DarkEff.png">
+                    <div class="card-img-overlay d-flex flex-column justify-content-end">
+                        <h5 class="card-title">Peningkatan Layanan Kesehatan Palu Diapresiasi Menkes Budi</h5>
+                        <p class="card-text">Jason4931 - 7 Januari 2024</p>
+                    </div>
+                </div>
+            </a>
+        </div> -->
     </div>
     <h3 class="d-inline-block">Riwayat</h3>
     <a href="?menu=riwayat" class="float-end ms-3 mt-1 text-decoration-none">Lihat Lebih</a>
@@ -40,7 +50,7 @@
         <div class="col-12 col-lg-4 col-sm-6 mt-2">
             <a href="#">
                 <div class="card bg-dark text-white hover-scale">
-                    <img class="card-img" src="./Image/LogoSekolah.jpg" alt="Card image" style="max-height: 200px;">
+                    <img class="card-img" src="./Image/LogoRPL.jpg" alt="Card image" style="max-height: 200px;">
                     <img class="card-img-overlay p-0 w-100 h-100" src="./Image/DarkEff.png">
                     <div class="card-img-overlay d-flex flex-column justify-content-end">
                         <h5 class="card-title">Peningkatan Layanan Kesehatan Palu Diapresiasi Menkes Budi</h5>
@@ -52,7 +62,7 @@
         <div class="col-12 col-lg-4 col-sm-6 mt-2">
             <a href="#">
                 <div class="card bg-dark text-white hover-scale">
-                    <img class="card-img" src="./Image/LogoSekolah.jpg" alt="Card image" style="max-height: 200px;">
+                    <img class="card-img" src="./Image/LogoRPL.jpg" alt="Card image" style="max-height: 200px;">
                     <img class="card-img-overlay p-0 w-100 h-100" src="./Image/DarkEff.png">
                     <div class="card-img-overlay d-flex flex-column justify-content-end">
                         <h5 class="card-title">Peningkatan Layanan Kesehatan Palu Diapresiasi Menkes Budi</h5>
@@ -64,7 +74,7 @@
         <div class="col-12 col-lg-4 col-sm-6 mt-2">
             <a href="#">
                 <div class="card bg-dark text-white hover-scale">
-                    <img class="card-img" src="./Image/CardImage.png" alt="Card image" style="max-height: 200px;">
+                    <img class="card-img" src="./Image/LogoRPL.jpg" alt="Card image" style="max-height: 200px;">
                     <img class="card-img-overlay p-0 w-100 h-100" src="./Image/DarkEff.png">
                     <div class="card-img-overlay d-flex flex-column justify-content-end">
                         <h5 class="card-title">Peningkatan Layanan Kesehatan Palu Diapresiasi Menkes Budi</h5>
