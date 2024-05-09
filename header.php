@@ -68,15 +68,15 @@
                     $kegiatan = '';
                     $event = '';
                     $pendaftaran = '';
-                    if($_SESSION['Active'] == 'dashboard') {
+                    if($active == 'dashboard') {
                         $dashboard = 'active';
-                    } else if($_SESSION['Active'] == 'pengumuman') {
+                    } else if($active == 'pengumuman') {
                         $pengumuman = 'active';
-                    } else if($_SESSION['Active'] == 'kegiatan') {
+                    } else if($active == 'kegiatan') {
                         $kegiatan = 'active';
-                    } else if($_SESSION['Active'] == 'event') {
+                    } else if($active == 'event') {
                         $event = 'active';
-                    } else if($_SESSION['Active'] == 'pendaftaran') {
+                    } else if($active == 'pendaftaran') {
                         $pendaftaran = 'active';
                     }
                     ?>
@@ -86,31 +86,31 @@
                         <?php } else { ?>
                             <a class="nav-link mx-2 pb-0 <?=$dashboard?>" href="./">Beranda</a>
                         <?php } ?>
-                        <?php if($_SESSION['Active'] == 'dashboard') { ?>
+                        <?php if($active == 'dashboard') { ?>
                             <div class="border border-0 rounded-pill" style="background-color: #2791CC; height: 3px"></div>
                         <?php } ?>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-2 pb-0 <?=$pengumuman?>" href="?menu=pengumuman">Pengumuman</a>
-                        <?php if($_SESSION['Active'] == 'pengumuman') { ?>
+                        <?php if($active == 'pengumuman') { ?>
                             <div class="border border-0 rounded-pill" style="background-color: #2791CC; height: 3px"></div>
                         <?php } ?>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-2 pb-0 <?=$kegiatan?>" href="?menu=kegiatan">Kegiatan Sekolah</a>
-                        <?php if($_SESSION['Active'] == 'kegiatan') { ?>
+                        <?php if($active == 'kegiatan') { ?>
                             <div class="border border-0 rounded-pill" style="background-color: #2791CC; height: 3px"></div>
                         <?php } ?>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-2 pb-0 <?=$event?>" href="?menu=event">Event & Lomba</a>
-                        <?php if($_SESSION['Active'] == 'event') { ?>
+                        <?php if($active == 'event') { ?>
                             <div class="border border-0 rounded-pill" style="background-color: #2791CC; height: 3px"></div>
                         <?php } ?>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-2 pb-0 <?=$pendaftaran?>" href="?menu=pendaftaran">Pendaftaran Siswa</a>
-                        <?php if($_SESSION['Active'] == 'pendaftaran') { ?>
+                        <?php if($active == 'pendaftaran') { ?>
                             <div class="border border-0 rounded-pill" style="background-color: #2791CC; height: 3px"></div>
                         <?php } ?>
                     </li>

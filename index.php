@@ -65,70 +65,64 @@
         }
         switch ($_GET['menu']) {
             case "pengumuman":
-                $_SESSION["Active"]="pengumuman";
+                $active="pengumuman";
                 include "header.php";
                 include "pengumuman.php";
                 break;
             case "kegiatan":
-                $_SESSION["Active"]="kegiatan";
+                $active="kegiatan";
                 include "header.php";
                 include "kegiatan.php";
                 break;
             case "event":
-                $_SESSION["Active"]="event";
+                $active="event";
                 include "header.php";
                 include "event.php";
                 break;
             case "pendaftaran":
-                $_SESSION["Active"]="pendaftaran";
+                $active="pendaftaran";
                 include "header.php";
                 include "pendaftaran.php";
                 break;
             case "informasi":
-                $_SESSION["Active"]="informasi";
+                $active="informasi";
                 include "header.php";
                 include "informasi.php";
                 break;
             case "riwayat":
-                $_SESSION["Active"]="riwayat";
+                $active="riwayat";
                 include "header.php";
                 include "riwayat.php";
                 break;
             case "admin-createinformasi":
                 if(isset($_SESSION["Nama"])) {
-                    $_SESSION["Active"]="informasi";
+                    $active="informasi";
                     include "header.php";
                     include "admin-createinformasi.php";
                 } else {
-                    $_SESSION["Active"]="dashboard";
-                    include "header.php";
-                    include "dashboard.php";
+                    header("Location: ./");
                 }
                 break;
             case "admin-dashboard":
                 if(isset($_SESSION["Nama"])) {
-                    $_SESSION["Active"]="dashboard";
+                    $active="dashboard";
                     include "header.php";
                     include "admin-dashboard.php";
                 } else {
-                    $_SESSION["Active"]="dashboard";
-                    include "header.php";
-                    include "dashboard.php";
+                    header("Location: ./");
                 }
                 break;
             case "admin-informasi":
                 if(isset($_SESSION["Nama"])) {
-                    $_SESSION["Active"]="informasi";
+                    $active="informasi";
                     include "header.php";
                     include "admin-informasi.php";
                 } else {
-                    $_SESSION["Active"]="dashboard";
-                    include "header.php";
-                    include "dashboard.php";
+                    header("Location: ./");
                 }
                 break;
             default:
-                $_SESSION["Active"]="dashboard";
+                $active="dashboard";
                 include "header.php";
                 include "dashboard.php";
                 break;
