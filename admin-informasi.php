@@ -11,7 +11,6 @@
                     <div class="float-end d-inline-block align-items-center d-flex">
                         <p class="fs-5 mb-0 me-1 d-inline-block">35</p>
                         <input type="image" src="./image/Like.svg" alt="like" width="25" class="me-3">
-                        <input type="image" src="./image/Bookmark.svg" alt="bookmark" width="25" class="me-3">
                         <input type="image" src="./image/Trash.svg" alt="trash" width="27" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     </div>
                 </div>
