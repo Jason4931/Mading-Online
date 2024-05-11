@@ -28,9 +28,21 @@
                 }
             }
         }
-        if(empty($_SESSION['riwayat'])) {
-            ?><p class="fs-5">Tidak ada riwayat informasi.</p><?php
-        }
         ?>
     </div>
+    <?php if(empty($_SESSION['riwayat'])) {
+        ?><p class="fs-5">Tidak ada riwayat informasi.</p><?php
+    } else {
+        ?><div class="row mt-3">
+            <div class="col-3">
+                <hr>
+            </div>
+            <div class="col text-center">
+                <a href="?logout" class="fs-5 text-decoration-none">Hapus Riwayat</a>
+            </div>
+            <div class="col-3">
+                <hr>
+            </div>
+        </div><?php
+    } ?>
 </main>

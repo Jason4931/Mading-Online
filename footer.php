@@ -11,5 +11,5 @@
     <a href="#" target="_blank"><img src="./Image/Instagram.svg" alt="Instagram" width="25"></a>⠀
     <a href="#" target="_blank"><img src="./Image/Twitter.svg" alt="Twitter" width="25"></a>⠀
     <a href="#" target="_blank"><img src="./Image/Youtube.svg" alt="Youtube" width="25"></a>
-    <p class="float-end fw-lighter small">Madingonline.com⠀ All Rights Reserved.</p>
+    <p class="float-end fw-lighter small">Madingonline.com⠀All Rights Reserved.</p>
 </footer>
