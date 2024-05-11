@@ -1,6 +1,7 @@
 <main class="bg-body-secondary p-3">
     <div class="card">
         <?php
+        $_SESSION['riwayat'][$_GET['id']]=$_GET['id'];
         if(isset($_GET['id'])) {
             $sql = "SELECT * FROM `informasi` WHERE `id`='$_GET[id]'";
             $result = $conn->query($sql);
@@ -19,14 +20,14 @@
                                     <p class="fs-5 mb-0 me-1 d-inline-block"><?=$row['like']?></p>
                                     <?php $name = "like".$_GET['id'];
                                     if(isset($_COOKIE[$name])) { ?>
-                                        <form action="./?menu=informasi&id=<?=$_GET['id']?>" method="post">
+                                        <form action="./" method="post">
                                             <input type="number" name="id" value="<?=$_GET['id']?>" hidden>
                                             <input type="number" name="likevalue" value="<?=$row['like']?>" hidden>
                                             <input type="text" name="dislike" hidden>
                                             <input type="image" src="./image/LikeFill.svg" alt="like" width="25">
                                         </form>
                                     <?php } else { ?>
-                                        <form action="./?menu=informasi&id=<?=$_GET['id']?>" method="post">
+                                        <form action="./" method="post">
                                             <input type="number" name="id" value="<?=$_GET['id']?>" hidden>
                                             <input type="number" name="likevalue" value="<?=$row['like']?>" hidden>
                                             <input type="text" name="like" hidden>

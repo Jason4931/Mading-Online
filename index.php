@@ -44,6 +44,11 @@
         ?>
     </head>
     <?php
+    if(isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > (86400 * 7))) {
+        session_unset();
+        session_destroy();
+    };
+    $_SESSION['LAST_ACTIVITY'] = time();
     function tgl_indo($date){
         $bulan = array (
             1 => 'Januari',
@@ -62,6 +67,9 @@
         $string = explode('-', $date);
         return $string[2] . ' ' . $bulan[(int)$string[1]] . ' ' . $string[0];
     }
+    if(!isset($_SESSION['riwayat'])) {
+        $_SESSION['riwayat'] = [];
+    }
     if(isset($_POST['Nama']) && isset($_POST['Pass'])) {
         $sql = "SELECT * FROM `akun` WHERE `username`='$_POST[Nama]' AND `password`='$_POST[Pass]'";
         $result = $conn->query($sql);
@@ -76,7 +84,7 @@
     }
     if(isset($_POST['like'])) {
         $name="like".$_POST["id"];
-        setcookie($name, 1, time() + (86400 * 7)); // 86400 = 1 day
+        setcookie($name, 1, time() + (86400 * 7), '/'); // 86400 = 1 day
         $likes=$_POST['likevalue']+1;
         $sql = "UPDATE `informasi` SET `like`='$likes' WHERE `id`='$_POST[id]'";
         $result = $conn->query($sql);
@@ -85,7 +93,7 @@
         }
     } else if(isset($_POST['dislike'])) {
         $name="like".$_POST["id"];
-        setcookie($name, 0, time() - (86400 * 7)); // delete
+        setcookie($name, 0, time() - (86400), '/'); // delete
         $likes=$_POST['likevalue']-1;
         $sql = "UPDATE `informasi` SET `like`='$likes' WHERE `id`='$_POST[id]'";
         $result = $conn->query($sql);
