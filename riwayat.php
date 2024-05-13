@@ -1,6 +1,10 @@
 <main class="bg-body-secondary p-3">
     <h3 class="d-inline-block">Riwayat</h3>
-    <a href="?menu=dashboard" class="float-end ms-3 mt-1 text-decoration-none">Kembali</a>
+    <?php if(isset($_SESSION['Nama'])) { ?>
+        <a href="?menu=admin-dashboard" class="float-end ms-3 mt-1 text-decoration-none">Kembali</a>
+    <?php } else { ?>
+        <a href="?menu=dashboard" class="float-end ms-3 mt-1 text-decoration-none">Kembali</a>
+    <?php } ?>
     <hr class="d-inline-block float-end w-75 d-none d-lg-block">
     <hr class="d-inline-block float-end w-50 d-none d-sm-block d-lg-none">
     <hr class="d-inline-block float-end w-25 d-block d-sm-none">
@@ -38,7 +42,11 @@
                 <hr>
             </div>
             <div class="col text-center">
-                <a href="?logout" class="fs-5 text-decoration-none">Hapus Riwayat</a>
+                <?php if(isset($_SESSION['Nama'])) { ?>
+                    <a href="?logout&admin=true" class="fs-5 text-decoration-none">Hapus Riwayat</a>
+                <?php } else { ?>
+                    <a href="?logout" class="fs-5 text-decoration-none">Hapus Riwayat</a>
+                <?php } ?>
             </div>
             <div class="col-3">
                 <hr>

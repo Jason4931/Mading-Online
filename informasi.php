@@ -17,19 +17,19 @@
                             </div>
                             <div class="col-4">
                                 <div class="float-end d-inline-block align-items-center d-flex">
-                                    <p class="fs-5 mb-0 me-1 d-inline-block"><?=$row['like']?></p>
+                                    <p class="fs-5 mb-0 me-1 d-inline-block"><?=$row['suka']?></p>
                                     <?php $name = "like".$_GET['id'];
                                     if(isset($_COOKIE[$name])) { ?>
                                         <form action="./" method="post">
                                             <input type="number" name="id" value="<?=$_GET['id']?>" hidden>
-                                            <input type="number" name="likevalue" value="<?=$row['like']?>" hidden>
+                                            <input type="number" name="likevalue" value="<?=$row['suka']?>" hidden>
                                             <input type="text" name="dislike" hidden>
                                             <input type="image" src="./image/LikeFill.svg" alt="like" width="25">
                                         </form>
                                     <?php } else { ?>
                                         <form action="./" method="post">
                                             <input type="number" name="id" value="<?=$_GET['id']?>" hidden>
-                                            <input type="number" name="likevalue" value="<?=$row['like']?>" hidden>
+                                            <input type="number" name="likevalue" value="<?=$row['suka']?>" hidden>
                                             <input type="text" name="like" hidden>
                                             <input type="image" src="./image/Like.svg" alt="like" width="25">
                                         </form>

@@ -5,7 +5,7 @@
     <hr class="d-inline-block float-end w-25 d-block d-sm-none">
     <div class="row mb-3">
         <?php
-        $sql = "SELECT * FROM `informasi` ORDER BY `tanggal` ASC LIMIT 20";
+        $sql = "SELECT * FROM `informasi` ORDER BY `tanggal` DESC LIMIT 20";
         $result = $conn->query($sql);
         if (mysqli_num_rows($result)>0) {
             while($row = $result->fetch_assoc()) {
@@ -88,4 +88,3 @@
         </div> -->
     </div>
 </main>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

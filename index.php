@@ -44,9 +44,18 @@
         ?>
     </head>
     <?php
-    if(isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > (86400 * 7))) {
+    if(isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > (86400 * 3))) {
         session_unset();
         session_destroy();
+        $sql = "SELECT * FROM `kunjungan`";
+        $result = $conn->query($sql);
+        if (mysqli_num_rows($result)>0) {
+            while($row = $result->fetch_assoc()) {
+                $pengunjung=$row['jumlah']+1;
+                $sqla="UPDATE `kunjungan` SET `jumlah`='$pengunjung'";
+                $resulta = $conn->query($sqla);
+            }
+        }
     };
     $_SESSION['LAST_ACTIVITY'] = time();
     function tgl_indo($date){
@@ -73,7 +82,6 @@
     if(isset($_POST['Nama']) && isset($_POST['Pass'])) {
         $sql = "SELECT * FROM `akun` WHERE `username`='$_POST[Nama]' AND `password`='$_POST[Pass]'";
         $result = $conn->query($sql);
-        $row = $result->fetch_assoc();
         if (mysqli_num_rows($result)>0) {
             $_SESSION['Nama'] = $_POST['Nama'];
             header("Location: ?menu=admin-dashboard");
@@ -86,19 +94,27 @@
         $name="like".$_POST["id"];
         setcookie($name, 1, time() + (86400 * 7), '/'); // 86400 = 1 day
         $likes=$_POST['likevalue']+1;
-        $sql = "UPDATE `informasi` SET `like`='$likes' WHERE `id`='$_POST[id]'";
+        $sql = "UPDATE `informasi` SET `suka`='$likes' WHERE `id`='$_POST[id]'";
         $result = $conn->query($sql);
         if ($result) {
-            header("Location: ./?menu=informasi&id=$_POST[id]");
+            if(isset($_SESSION["Nama"])) {
+                header("Location: ./?menu=admin-informasi&id=$_POST[id]");
+            } else {
+                header("Location: ./?menu=informasi&id=$_POST[id]");
+            }
         }
     } else if(isset($_POST['dislike'])) {
         $name="like".$_POST["id"];
-        setcookie($name, 0, time() - (86400), '/'); // delete
+        setcookie($name, 0, time() - 86400, '/'); // delete
         $likes=$_POST['likevalue']-1;
-        $sql = "UPDATE `informasi` SET `like`='$likes' WHERE `id`='$_POST[id]'";
+        $sql = "UPDATE `informasi` SET `suka`='$likes' WHERE `id`='$_POST[id]'";
         $result = $conn->query($sql);
         if ($result) {
-            header("Location: ./?menu=informasi&id=$_POST[id]");
+            if(isset($_SESSION["Nama"])) {
+                header("Location: ./?menu=admin-informasi&id=$_POST[id]");
+            } else {
+                header("Location: ./?menu=informasi&id=$_POST[id]");
+            }
         }
     }
     if(isset($_POST['comment'])) {
@@ -106,7 +122,11 @@
         $sql="INSERT INTO `komentar` (`informasi_id`, `nama`, `tanggal`, `komentar`) VALUES ('$_POST[id]', '$_POST[nama]', '$today', '$_POST[comment]')";
         $result = $conn->query($sql);
         if ($result) {
-            header("Location: ./?menu=informasi&id=$_POST[id]");
+            if(isset($_SESSION["Nama"])) {
+                header("Location: ./?menu=admin-informasi&id=$_POST[id]");
+            } else {
+                header("Location: ./?menu=informasi&id=$_POST[id]");
+            }
         }
     }
     ?>
@@ -171,6 +191,15 @@
                     $active="informasi";
                     include "header.php";
                     include "admin-informasi.php";
+                } else {
+                    header("Location: ./");
+                }
+                break;
+            case "admin-dashboard-more":
+                if(isset($_SESSION["Nama"])) {
+                    $active="dashboard";
+                    include "header.php";
+                    include "admin-dashboard-more.php";
                 } else {
                     header("Location: ./");
                 }
