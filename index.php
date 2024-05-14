@@ -92,7 +92,7 @@
     }
     if(isset($_POST['like'])) {
         $name="like".$_POST["id"];
-        setcookie($name, 1, time() + (86400 * 7), '/'); // 86400 = 1 day
+        setcookie($name, 1, time() + (86400 * 3), '/'); // 86400 = 1 day
         $likes=$_POST['likevalue']+1;
         $sql = "UPDATE `informasi` SET `suka`='$likes' WHERE `id`='$_POST[id]'";
         $result = $conn->query($sql);
@@ -126,6 +126,25 @@
                 header("Location: ./?menu=admin-informasi&id=$_POST[id]");
             } else {
                 header("Location: ./?menu=informasi&id=$_POST[id]");
+            }
+        }
+    }
+    if(isset($_POST['delinfo'])) {
+        $sql="DELETE FROM `informasi` WHERE `id`='$_POST[id]'";
+        $result = $conn->query($sql);
+        unset($_SESSION['riwayat'][$_POST['id']]);
+        if ($result) {
+            header("Location: ./?menu=admin-dashboard");
+        }
+    }
+    if(isset($_POST['delcomment']) || isset($_POST['delcommentinfo'])) {
+        $sql="DELETE FROM `komentar` WHERE `id`='$_POST[id]'";
+        $result = $conn->query($sql);
+        if ($result) {
+            if(isset($_POST['delcommentinfo'])) {
+                header("Location: ./?menu=admin-informasi&id=$_POST[idinfo]");
+            } else {
+                header("Location: ./?menu=admin-dashboard-more&tipe=komentar");
             }
         }
     }
@@ -169,45 +188,49 @@
                 include "riwayat.php";
                 break;
             case "admin-createinformasi":
+                $active="informasi";
+                include "header.php";
                 if(isset($_SESSION["Nama"])) {
-                    $active="informasi";
-                    include "header.php";
                     include "admin-createinformasi.php";
                 } else {
-                    header("Location: ./");
+                    include "dashboard.php";
                 }
                 break;
             case "admin-dashboard":
+                $active="dashboard";
+                include "header.php";
                 if(isset($_SESSION["Nama"])) {
-                    $active="dashboard";
-                    include "header.php";
                     include "admin-dashboard.php";
                 } else {
-                    header("Location: ./");
+                    include "dashboard.php";
                 }
                 break;
             case "admin-informasi":
+                $active="informasi";
+                include "header.php";
                 if(isset($_SESSION["Nama"])) {
-                    $active="informasi";
-                    include "header.php";
                     include "admin-informasi.php";
                 } else {
-                    header("Location: ./");
+                    include "dashboard.php";
                 }
                 break;
             case "admin-dashboard-more":
+                $active="dashboard";
+                include "header.php";
                 if(isset($_SESSION["Nama"])) {
-                    $active="dashboard";
-                    include "header.php";
                     include "admin-dashboard-more.php";
                 } else {
-                    header("Location: ./");
+                    include "dashboard.php";
                 }
                 break;
             default:
                 $active="dashboard";
                 include "header.php";
-                include "dashboard.php";
+                if(isset($_SESSION["Nama"])) {
+                    include "admin-dashboard.php";
+                } else {
+                    include "dashboard.php";
+                }
                 break;
         }
         include "footer.php";

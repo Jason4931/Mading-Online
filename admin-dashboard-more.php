@@ -45,7 +45,11 @@
                                 <p><?=$row['komentar']?></p>
                             </div>
                             <div class="me-4">
-                                <input type="image" src="./image/Trash.svg" alt="trash" width="27" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <form action="./" method="post">
+                                    <input type="number" name="id" value="<?=$row['id']?>" hidden>
+                                    <input type="text" name="delcomment" hidden>
+                                    <input type="image" src="./image/Trash.svg" alt="trash" width="27" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                </form>
                             </div>
                         </div>
                     </div>

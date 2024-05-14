@@ -34,7 +34,26 @@
                                             <input type="image" src="./image/Like.svg" alt="like" width="25" class="me-3">
                                         </form>
                                     <?php } ?>
-                                    <input type="image" src="./image/Trash.svg" alt="trash" width="27" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <button class="border-0 bg-white" data-bs-toggle="modal" data-bs-target="#info">
+                                        <img src="./image/Trash.svg" alt="trash" width="27">
+                                    </button>
+                                    <div class="modal fade" id="info" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="border: none;">
+                                                <h1 class="modal-title fs-5 text-center w-100" id="exampleModalLabel">Apakah Anda Yakin?</h1>
+                                                </div>
+                                                <div class="modal-footer d-flex justify-content-center" style="border: none;">
+                                                    <button type="button" class="btn text-white w-100 me-4" data-bs-dismiss="modal" style="background-color: #FF002E; max-width: 150px;">Tidak</button>
+                                                    <form action="./" method="post" class="w-100" style="max-width: 150px;">
+                                                        <input type="number" name="id" value="<?=$row['id']?>" hidden>
+                                                        <input type="text" name="delinfo" hidden>
+                                                        <input type="submit" class="btn text-white w-100" style="background-color: #009900;" value="Ya">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -52,19 +71,6 @@
             ?><p class="fs-5 m-3">Tidak ada informasi di sini.</p><?php
         }
         ?>
-    </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header" style="border: none;">
-            <h1 class="modal-title fs-5 text-center w-100" id="exampleModalLabel">Apakah Anda Yakin?</h1>
-            </div>
-            <div class="modal-footer d-flex justify-content-center" style="border: none;">
-                <button type="button" class="btn text-white w-100 me-4" data-bs-dismiss="modal" style="background-color: #FF002E; max-width: 150px;">Tidak</button>
-                <button type="button" class="btn text-white w-100" style="background-color: #009900; max-width: 150px;">Ya</button>
-            </div>
-        </div>
-        </div>
     </div>
     <div class="row mt-2">
         <form action="./?menu=informasi&id=<?=$_GET['id']?>" method="post">
@@ -116,6 +122,24 @@
                         </div>
                         <div class="me-4">
                             <input type="image" src="./image/Trash.svg" alt="trash" width="27" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header" style="border: none;">
+                            <h1 class="modal-title fs-5 text-center w-100" id="ModalLabel">Apakah Anda Yakin?</h1>
+                            </div>
+                            <div class="modal-footer d-flex justify-content-center" style="border: none;">
+                                <button type="button" class="btn text-white w-100 me-4" data-bs-dismiss="modal" style="background-color: #FF002E; max-width: 150px;">Tidak</button>
+                                <form action="./" method="post" class="w-100" style="max-width: 150px;">
+                                    <input type="number" name="id" value="<?=$row['id']?>" hidden>
+                                    <input type="number" name="idinfo" value="<?=$_GET['id']?>" hidden>
+                                    <input type="text" name="delcommentinfo" hidden>
+                                    <input type="submit" class="btn text-white w-100" style="background-color: #009900;" value="Ya">
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
