@@ -7,6 +7,10 @@
                 URL.revokeObjectURL(output.src) // free memory
             }
         };
+        var loadFileAttach = function(event) {
+            var output = document.getElementById('attach-name');
+            output.innerHTML = event.target.files[0].name;
+        };
     </script>
     <div class="back mt-1">
         <div class="col">
@@ -35,10 +39,11 @@
                         <textarea name="isi" class="form-control card-title border-0 placeholder-h5" rows="4" placeholder="Text" required></textarea>
                     </div>
                     <div class="text-end mb-2">
-                        <input name="file" type="file" id="attach" class="d-none w-100 h-100">
+                        <input name="file" type="file" id="attach" class="d-none w-100 h-100" onchange="loadFileAttach(event)">
                         <label for="attach" class="btn cursor-pointer d-flex align-items-center justify-content-center">
                             <img src="./image/Attachment.svg" alt="attachment" width="25">
                         </label>
+                        <p id="attach-name"></p>
                     </div>
                 </div>
             </div>
