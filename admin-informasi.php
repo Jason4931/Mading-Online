@@ -44,11 +44,11 @@
                                                 <h1 class="modal-title fs-5 text-center w-100" id="exampleModalLabel">Apakah Anda Yakin?</h1>
                                                 </div>
                                                 <div class="modal-footer d-flex justify-content-center" style="border: none;">
-                                                    <button type="button" class="btn text-white w-100 me-4" data-bs-dismiss="modal" style="background-color: #FF002E; max-width: 150px;">Tidak</button>
+                                                    <button type="button" class="btn text-white w-100 mx-2" data-bs-dismiss="modal" style="background-color: #FF002E; max-width: 150px;">Tidak</button>
                                                     <form action="./" method="post" class="w-100" style="max-width: 150px;">
                                                         <input type="number" name="id" value="<?=$row['id']?>" hidden>
                                                         <input type="text" name="delinfo" hidden>
-                                                        <input type="submit" class="btn text-white w-100" style="background-color: #009900;" value="Ya">
+                                                        <input type="submit" class="btn text-white w-100 mx-2" style="background-color: #009900;" value="Ya">
                                                     </form>
                                                 </div>
                                             </div>
@@ -61,6 +61,16 @@
                         <p class="card-text">
                             <?=$row['isi']?>
                         </p>
+                        <?php if($row['file'] != NULL) { ?>
+                            <hr class="w-100">
+                            <div class="row">
+                                <div class="col"></div>
+                                <div class="col-md-6 col-sm-9 col-12">
+                                    <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($row['file']).'" class="w-100" alt="File" style="max-height: 300px">'; ?>
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                        <?php } ?>
                     </div>
                     <?php
                 }
@@ -132,12 +142,12 @@
                             <h1 class="modal-title fs-5 text-center w-100" id="ModalLabel">Apakah Anda Yakin?</h1>
                             </div>
                             <div class="modal-footer d-flex justify-content-center" style="border: none;">
-                                <button type="button" class="btn text-white w-100 me-4" data-bs-dismiss="modal" style="background-color: #FF002E; max-width: 150px;">Tidak</button>
+                                <button type="button" class="btn text-white w-100 mx-2" data-bs-dismiss="modal" style="background-color: #FF002E; max-width: 150px;">Tidak</button>
                                 <form action="./" method="post" class="w-100" style="max-width: 150px;">
                                     <input type="number" name="id" value="<?=$row['id']?>" hidden>
                                     <input type="number" name="idinfo" value="<?=$_GET['id']?>" hidden>
                                     <input type="text" name="delcommentinfo" hidden>
-                                    <input type="submit" class="btn text-white w-100" style="background-color: #009900;" value="Ya">
+                                    <input type="submit" class="btn text-white w-100 mx-2" style="background-color: #009900;" value="Ya">
                                 </form>
                             </div>
                         </div>

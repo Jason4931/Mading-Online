@@ -129,6 +129,54 @@
             }
         }
     }
+    if(isset($_POST['createinfo'])) {
+        $today = date("Y-m-d");
+        if ($_FILES['gambar']['error'] === UPLOAD_ERR_OK) {
+            $gambar = file_get_contents($_FILES['gambar']['tmp_name']);
+        } else {
+            echo "Error uploading gambar: " . $_FILES['gambar']['error'];
+            exit;
+        }
+        if ($_FILES['file']['error'] === UPLOAD_ERR_OK) {
+            $file = file_get_contents($_FILES['file']['tmp_name']);
+            $hasFile = true;
+        } else {
+            $hasFile = false;
+        }
+        $sql = "INSERT INTO `informasi` (`judul`, `penulis`, `tanggal`, `gambar`, `isi`, `kategori`, `suka`";
+        if ($hasFile) {
+            $sql .= ", `file`";
+        }
+        $sql .= ") VALUES (?,?,?,?,?,?,?";
+        if ($hasFile) {
+            $sql .= ",?";
+        }
+        $sql .= ")";
+        $stmt = $conn->prepare($sql);
+        if (!$stmt) {
+            echo "Error preparing statement: " . $conn->error;
+            exit;
+        }
+        $params = [
+            $_POST['judul'],
+            $_POST['penulis'],
+            $today,
+            $gambar,
+            $_POST['isi'],
+            $_POST['kategori'],
+            0
+        ];
+        if ($hasFile) {
+            $params[] = $file;
+        }
+        $stmt->bind_param(str_repeat("s", count($params)), ...$params);
+        if (!$stmt->execute()) {
+            echo "Error executing query: " . $stmt->error;
+            exit;
+        }
+        header("Location: ./?menu=admin-dashboard");
+        exit;
+    }
     if(isset($_POST['delinfo'])) {
         $sql="DELETE FROM `informasi` WHERE `id`='$_POST[id]'";
         $result = $conn->query($sql);
