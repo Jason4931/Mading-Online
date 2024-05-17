@@ -11,16 +11,29 @@
             while($row = $result->fetch_assoc()) {
                 ?>
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-2">
-                    <a href="?menu=informasi&id=<?=$row['id']?>">
-                        <div class="card bg-dark text-white hover-scale">
-                            <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gambar']).'" alt="Card image" style="height: 300px;">'; ?>
-                            <img class="card-img-overlay p-0 w-100 h-100" src="./Image/DarkEff.png">
-                            <div class="card-img-overlay d-flex flex-column justify-content-end">
-                                <h5 class="card-title"><?=$row['judul']?></h5>
-                                <p class="card-text"><?=$row['penulis']?> - <?=$row['tanggal']?></p>
+                    <?php if(isset($_SESSION["Nama"])) { ?>
+                        <a href="?menu=admin-informasi&id=<?=$row['id']?>">
+                            <div class="card bg-dark text-white hover-scale">
+                                <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gambar']).'" alt="Card image" style="height: 300px;">'; ?>
+                                <img class="card-img-overlay p-0 w-100 h-100" src="./Image/DarkEff.png">
+                                <div class="card-img-overlay d-flex flex-column justify-content-end">
+                                    <h5 class="card-title"><?=$row['judul']?></h5>
+                                    <p class="card-text"><?=$row['penulis']?> - <?=$row['tanggal']?></p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    <?php } else { ?>
+                        <a href="?menu=informasi&id=<?=$row['id']?>">
+                            <div class="card bg-dark text-white hover-scale">
+                                <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gambar']).'" alt="Card image" style="height: 300px;">'; ?>
+                                <img class="card-img-overlay p-0 w-100 h-100" src="./Image/DarkEff.png">
+                                <div class="card-img-overlay d-flex flex-column justify-content-end">
+                                    <h5 class="card-title"><?=$row['judul']?></h5>
+                                    <p class="card-text"><?=$row['penulis']?> - <?=$row['tanggal']?></p>
+                                </div>
+                            </div>
+                        </a>
+                    <?php } ?>
                 </div>
                 <?php
             }
