@@ -36,7 +36,7 @@
                 <hr class="w-100">
                 <div class="d-flex align-items-center">
                     <div class="mt-2 flex-grow-1 m-2">
-                        <textarea name="isi" class="form-control card-title border-0 placeholder-h5" rows="4" placeholder="Text" required></textarea>
+                        <textarea name="isi" id="isi" hidden></textarea>
                     </div>
                     <div class="text-end mb-2">
                         <input name="file" type="file" id="attach" class="d-none w-100 h-100" onchange="loadFileAttach(event)">
@@ -104,4 +104,11 @@
             <img src="./image/SendWhite.svg" alt="send" width="15">
         </a>
     </div>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#isi' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
 </main>
