@@ -120,6 +120,7 @@
     }
     if(isset($_POST['comment'])) {
         $today = date("Y-m-d");
+        // htmlentities html_entity_decode
         $sql="INSERT INTO `komentar` (`informasi_id`, `nama`, `tanggal`, `komentar`) VALUES ('$_POST[id]', '$_POST[nama]', '$today', '$_POST[comment]')";
         $result = $conn->query($sql);
         if ($result) {
