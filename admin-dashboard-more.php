@@ -45,11 +45,24 @@
                                 <p><?=$row['komentar']?></p>
                             </div>
                             <div class="me-4">
-                                <form action="./" method="post">
-                                    <input type="number" name="id" value="<?=$row['id']?>" hidden>
-                                    <input type="text" name="delcomment" hidden>
-                                    <input type="image" src="./image/Trash.svg" alt="trash" width="27" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                </form>
+                                <input type="image" src="./image/Trash.svg" alt="trash" width="27" data-bs-toggle="modal" data-bs-target="#exampleModal<?=$row['id']?>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="exampleModal<?=$row['id']?>" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header border-0">
+                                <h1 class="modal-title fs-5 text-center w-100" id="ModalLabel">Apakah Anda Yakin?</h1>
+                                </div>
+                                <div class="modal-footer d-flex justify-content-center border-0">
+                                    <button type="button" class="btn text-white w-100 mx-2" data-bs-dismiss="modal" style="background-color: #FF002E; max-width: 150px;">Tidak</button>
+                                    <form action="./" method="post" class="w-100" style="max-width: 150px;">
+                                        <input type="number" name="id" value="<?=$row['id']?>" hidden>
+                                        <input type="text" name="delcomment" hidden>
+                                        <input type="submit" class="btn text-white w-100 mx-2" style="background-color: #009900;" value="Ya">
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>

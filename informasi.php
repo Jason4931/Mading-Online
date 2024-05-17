@@ -8,7 +8,7 @@
             if (mysqli_num_rows($result)>0) {
                 while($row = $result->fetch_assoc()) {
                     ?>
-                    <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gambar']).'" class="card-img-top w-100" alt="Foto" style="max-height: 300px">'; ?>
+                    <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gambar']).'" class="card-img-top w-100" alt="Foto">'; ?>
                     <div class="card-body">
                         <h3 class="card-title"><?=$row['judul']?></h3>
                         <div class="row">
