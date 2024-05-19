@@ -66,7 +66,7 @@
                             <div class="row">
                                 <div class="col"></div>
                                 <div class="col-md-6 col-sm-9 col-12">
-                                    <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($row['file']).'" class="w-100" alt="File" style="max-height: 300px">'; ?>
+                                    <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($row['file']).'" class="w-100" alt="File">'; ?>
                                 </div>
                                 <div class="col"></div>
                             </div>
