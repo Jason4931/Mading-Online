@@ -1,5 +1,5 @@
 <header class="mb-1">
-    <div class="w-100 p-4" style="background-color: #5227CC"></div>
+    <!-- <div class="w-100 p-4" style="background-color: #5227CC"></div> -->
     <?php if(isset($fail)) { ?>
         <div class="border border-danger bg-danger rounded p-2 m-3 mb-0 text-white text-center"><?=$fail?></div>
     <?php } ?>
