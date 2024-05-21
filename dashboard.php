@@ -5,7 +5,7 @@
     <hr class="d-inline-block float-end w-25 d-block d-sm-none">
     <div class="row mb-3">
         <?php
-        $sql = "SELECT * FROM `informasi` ORDER BY `tanggal` DESC LIMIT 20";
+        $sql = "SELECT * FROM `informasi` WHERE `accept`=1 ORDER BY `tanggal` DESC LIMIT 20";
         $result = $conn->query($sql);
         if (mysqli_num_rows($result)>0) {
             while($row = $result->fetch_assoc()) {

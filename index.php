@@ -145,11 +145,11 @@
         } else {
             $hasFile = false;
         }
-        $sql = "INSERT INTO `informasi` (`judul`, `penulis`, `tanggal`, `gambar`, `isi`, `kategori`, `suka`";
+        $sql = "INSERT INTO `informasi` (`judul`, `penulis`, `tanggal`, `gambar`, `isi`, `kategori`, `suka`, `accept`";
         if ($hasFile) {
             $sql .= ", `file`";
         }
-        $sql .= ") VALUES (?,?,?,?,?,?,?";
+        $sql .= ") VALUES (?,?,?,?,?,?,?,?";
         if ($hasFile) {
             $sql .= ",?";
         }
@@ -159,15 +159,29 @@
             echo "Error preparing statement: " . $conn->error;
             exit;
         }
-        $params = [
-            $_POST['judul'],
-            $_POST['penulis'],
-            $today,
-            $gambar,
-            $_POST['isi'],
-            $_POST['kategori'],
-            0
-        ];
+        if(!isset($_SESSION["Nama"])) {
+            $params = [
+                $_POST['judul'],
+                $_POST['penulis'],
+                $today,
+                $gambar,
+                $_POST['isi'],
+                $_POST['kategori'],
+                0,
+                0
+            ];
+        } else {
+            $params = [
+                $_POST['judul'],
+                $_POST['penulis'],
+                $today,
+                $gambar,
+                $_POST['isi'],
+                $_POST['kategori'],
+                0,
+                1
+            ];
+        }
         if ($hasFile) {
             $params[] = $file;
         }
@@ -176,7 +190,11 @@
             echo "Error executing query: " . $stmt->error;
             exit;
         }
-        header("Location: ./?menu=admin-dashboard");
+        if(isset($_SESSION["Nama"])) {
+            header("Location: ./?menu=admin-dashboard");
+        } else {
+            header("Location: ./?menu=dashboard&ci");
+        }
         exit;
     }
     if(isset($_POST['delinfo'])) {
@@ -185,6 +203,13 @@
         unset($_SESSION['riwayat'][$_POST['id']]);
         if ($result) {
             header("Location: ./?menu=admin-dashboard");
+        }
+    }
+    if(isset($_POST['acceptinfo'])) {
+        $sql="UPDATE `informasi` SET `accept`=1 WHERE `id`='$_POST[id]'";
+        $result = $conn->query($sql);
+        if ($result) {
+            header("Location: ./?menu=admin-informasi&id=$_POST[id]");
         }
     }
     if(isset($_POST['delcomment']) || isset($_POST['delcommentinfo'])) {
@@ -222,14 +247,10 @@
                 include "header.php";
                 include "riwayat.php";
                 break;
-            case "admin-createinformasi":
+            case "createinformasi":
                 $active="informasi";
                 include "header.php";
-                if(isset($_SESSION["Nama"])) {
-                    include "admin-createinformasi.php";
-                } else {
-                    include "dashboard.php";
-                }
+                include "createinformasi.php";
                 break;
             case "admin-dashboard":
                 $active="dashboard";

@@ -19,7 +19,7 @@
     <hr class="d-inline-block float-end w-25 d-block d-sm-none">
     <div class="row mb-3">
         <?php
-        $sql = "SELECT * FROM `informasi` WHERE `kategori`='$_GET[tipe]' ORDER BY `tanggal` ASC";
+        $sql = "SELECT * FROM `informasi` WHERE `kategori`='$_GET[tipe]' AND `accept`=1 ORDER BY `tanggal` ASC";
         $result = $conn->query($sql);
         if (mysqli_num_rows($result)>0) {
             while($row = $result->fetch_assoc()) {

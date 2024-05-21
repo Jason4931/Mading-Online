@@ -1,15 +1,15 @@
 <main class="bg-body-secondary p-3">
-    <div class="row">
-        <div class="col">
+    <!-- <div class="row">
+        <div class="col"> -->
             <h3 class="d-flex align-items-center mt-2">Data Informasi</h3>
-        </div>
+        <!-- </div>
         <div class="col text-end">
             <a href="?menu=admin-createinformasi" class="btn text-white m-2" style="background-color: #FF002E" tabindex="-1" role="button"
                 aria-disabled="true">
                 + Buat Informasi
             </a>
         </div>
-    </div>
+    </div> -->
     <div class="d-flex align-items-center">
         <h6>Informasi yang paling dilike :⠀</h6>
         <h6 class="fw-normal">
@@ -54,7 +54,7 @@
             ?>
         </h6>
     </div>
-    <div class="d-flex align-items-center mt-1">
+    <div class="d-flex align-items-center mt-1 mb-3">
         <h6>Banyaknya komentar saat ini :⠀</h6>
         <h6 class="fw-normal">
             <?php
@@ -69,13 +69,13 @@
         <a class="mx-2 pb-0 fw-normal text-decoration-none" href="?menu=admin-dashboard-more&tipe=komentar">Lihat lebih banyak</a>
         </h6>
     </div>
-    <h3 class="d-inline-block mt-3">Informasi Terkini</h3>
+    <h3 class="d-inline-block">Informasi Terkini</h3>
     <hr class="d-inline-block float-end w-75 d-none d-lg-block">
     <hr class="d-inline-block float-end w-50 d-none d-sm-block d-lg-none">
     <hr class="d-inline-block float-end w-25 d-block d-sm-none">
     <div class="row mb-3">
         <?php
-        $sql = "SELECT * FROM `informasi` ORDER BY `tanggal` DESC LIMIT 20";
+        $sql = "SELECT * FROM `informasi` WHERE `accept`=1 ORDER BY `tanggal` DESC LIMIT 20";
         $result = $conn->query($sql);
         if (mysqli_num_rows($result)>0) {
             while($row = $result->fetch_assoc()) {

@@ -3,8 +3,15 @@
     <?php if(isset($fail)) { ?>
         <div class="border border-danger bg-danger rounded p-2 m-3 mb-0 text-white text-center"><?=$fail?></div>
     <?php } ?>
+    <?php if(isset($_GET['ci'])) { ?>
+        <div class="border border-success bg-success rounded p-2 m-3 mb-0 text-white text-center">Informasi berhasil terkirim! Silahkan menunggu untuk diterima oleh Admin.</div>
+    <?php } ?>
     <div class="row">
         <div class="col">
+            <a href="?menu=createinformasi" class="btn text-white m-3" style="background-color: #FF002E" tabindex="-1" role="button"
+                aria-disabled="true">
+                + Buat Informasi
+            </a>
         </div>
         <div class="col text-center">
             <img src="./Image/Logo.png" alt="logo" width="200" class="img-fluid">

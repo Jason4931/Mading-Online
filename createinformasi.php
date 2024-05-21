@@ -12,12 +12,19 @@
             output.innerHTML = event.target.files[0].name;
         };
     </script>
-    <div class="back mt-1">
+    <div class="mt-1">
         <div class="col">
-            <a href="?menu=admin-dashboard" class="btn text-white" style="background-color: #FF002E" tabindex="-1" role="button"
-                aria-disabled="true">
-                Kembali
-            </a>
+            <?php if(isset($_SESSION['Nama'])) { ?>
+                <a href="?menu=admin-dashboard" class="btn text-white" style="background-color: #FF002E" tabindex="-1" role="button"
+                    aria-disabled="true">
+                    Kembali
+                </a>
+            <?php } else { ?>
+                <a href="?menu=dashboard" class="btn text-white" style="background-color: #FF002E" tabindex="-1" role="button"
+                    aria-disabled="true">
+                    Kembali
+                </a>
+            <?php } ?>
         </div>
     </div>
     <div class="card mt-3">
