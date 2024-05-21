@@ -132,7 +132,7 @@
                             </div>
                             <div class="mt-2 flex-grow-1">
                                 <h5><?=$row['nama']?> - <?=tgl_indo($row['tanggal'])?></h5>
-                                <p><?=$row['komentar']?></p>
+                                <p><?=htmlspecialchars($row['komentar'])?></p>
                             </div>
                             <div class="me-4">
                                 <input type="image" src="./image/Trash.svg" alt="trash" width="27" data-bs-toggle="modal" data-bs-target="#exampleModal<?=$row['id']?>">

@@ -146,7 +146,7 @@
                             </div>
                             <div class="mt-2 flex-grow-1">
                                 <h5><?=$row['nama']?> - <?=tgl_indo($row['tanggal'])?></h5>
-                                <p><?=$row['komentar']?></p>
+                                <p><?=htmlspecialchars($row['komentar'])?></p>
                             </div>
                         </div>
                     </div>
