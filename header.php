@@ -64,20 +64,26 @@
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <?php
                     $dashboard = '';
+                    $kategori = '';
                     $pengumuman = '';
                     $kegiatan = '';
                     $event = '';
                     $pendaftaran = '';
+                    $lainnya = '';
                     if($active == 'dashboard') {
                         $dashboard = 'active';
-                    } else if($active == 'pengumuman') {
-                        $pengumuman = 'active';
-                    } else if($active == 'kegiatan') {
-                        $kegiatan = 'active';
-                    } else if($active == 'event') {
-                        $event = 'active';
-                    } else if($active == 'pendaftaran') {
-                        $pendaftaran = 'active';
+                    } else if($active == 'kategori') {
+                        if($_GET['tipe'] == 'pengumuman') {
+                            $pengumuman = 'active';
+                        } else if($_GET['tipe'] == 'kegiatan') {
+                            $kegiatan = 'active';
+                        } else if($_GET['tipe'] == 'event') {
+                            $event = 'active';
+                        } else if($_GET['tipe'] == 'pendaftaran') {
+                            $pendaftaran = 'active';
+                        } else if($_GET['tipe'] == 'lainnya') {
+                            $lainnya = 'active';
+                        }
                     }
                     ?>
                     <li class="nav-item">
@@ -91,26 +97,32 @@
                         <?php } ?>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-2 pb-0 <?=$pengumuman?>" href="?menu=pengumuman">Pengumuman</a>
-                        <?php if($active == 'pengumuman') { ?>
+                        <a class="nav-link mx-2 pb-0 <?=$pengumuman?>" href="?menu=kategori&tipe=pengumuman">Pengumuman</a>
+                        <?php if($active == 'kategori' && $_GET['tipe'] == 'pengumuman') { ?>
                             <div class="border border-0 rounded-pill" style="background-color: #2791CC; height: 3px"></div>
                         <?php } ?>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-2 pb-0 <?=$kegiatan?>" href="?menu=kegiatan">Kegiatan Sekolah</a>
-                        <?php if($active == 'kegiatan') { ?>
+                        <a class="nav-link mx-2 pb-0 <?=$kegiatan?>" href="?menu=kategori&tipe=kegiatan">Kegiatan Sekolah</a>
+                        <?php if($active == 'kategori' && $_GET['tipe'] == 'kegiatan') { ?>
                             <div class="border border-0 rounded-pill" style="background-color: #2791CC; height: 3px"></div>
                         <?php } ?>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-2 pb-0 <?=$event?>" href="?menu=event">Event & Lomba</a>
-                        <?php if($active == 'event') { ?>
+                        <a class="nav-link mx-2 pb-0 <?=$event?>" href="?menu=kategori&tipe=event">Event & Lomba</a>
+                        <?php if($active == 'kategori' && $_GET['tipe'] == 'event') { ?>
                             <div class="border border-0 rounded-pill" style="background-color: #2791CC; height: 3px"></div>
                         <?php } ?>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-2 pb-0 <?=$pendaftaran?>" href="?menu=pendaftaran">Pendaftaran Siswa</a>
-                        <?php if($active == 'pendaftaran') { ?>
+                        <a class="nav-link mx-2 pb-0 <?=$pendaftaran?>" href="?menu=kategori&tipe=pendaftaran">Pendaftaran Siswa</a>
+                        <?php if($active == 'kategori' && $_GET['tipe'] == 'pendaftaran') { ?>
+                            <div class="border border-0 rounded-pill" style="background-color: #2791CC; height: 3px"></div>
+                        <?php } ?>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-2 pb-0 <?=$lainnya?>" href="?menu=kategori&tipe=lainnya">Lainnya</a>
+                        <?php if($active == 'kategori' && $_GET['tipe'] == 'lainnya') { ?>
                             <div class="border border-0 rounded-pill" style="background-color: #2791CC; height: 3px"></div>
                         <?php } ?>
                     </li>

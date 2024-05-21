@@ -80,6 +80,7 @@
                                                 <option value="2">Kegiatan Sekolah</option>
                                                 <option value="3">Event & Lomba</option>
                                                 <option value="4">Pendaftaran Siswa</option>
+                                                <option value="5">Lainnya</option>
                                             </select>
                                         </div>
                                     </div>

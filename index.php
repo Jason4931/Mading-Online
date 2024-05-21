@@ -207,25 +207,10 @@
             $_GET['menu']=null;
         }
         switch ($_GET['menu']) {
-            case "pengumuman":
-                $active="pengumuman";
+            case "kategori":
+                $active="kategori";
                 include "header.php";
-                include "pengumuman.php";
-                break;
-            case "kegiatan":
-                $active="kegiatan";
-                include "header.php";
-                include "kegiatan.php";
-                break;
-            case "event":
-                $active="event";
-                include "header.php";
-                include "event.php";
-                break;
-            case "pendaftaran":
-                $active="pendaftaran";
-                include "header.php";
-                include "pendaftaran.php";
+                include "kategori.php";
                 break;
             case "informasi":
                 $active="informasi";
