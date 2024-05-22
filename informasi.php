@@ -1,4 +1,35 @@
 <main class="bg-body-secondary p-3">
+    <?php $profile = [
+        "./Image/Profile/Guest.png",//rare
+        "./Image/Profile/Coder.png",//rare
+        "./Image/Profile/Profile1.png",//1
+        "./Image/Profile/Profile2.png",
+        "./Image/Profile/Profile3.png",
+        "./Image/Profile/Profile4.png",
+        "./Image/Profile/Profile5.png",
+        "./Image/Profile/Profile6.png",
+        "./Image/Profile/Profile7.png",
+        "./Image/Profile/Profile8.png",
+        "./Image/Profile/Profile9.png",
+        "./Image/Profile/Profile1.png",//2
+        "./Image/Profile/Profile2.png",
+        "./Image/Profile/Profile3.png",
+        "./Image/Profile/Profile4.png",
+        "./Image/Profile/Profile5.png",
+        "./Image/Profile/Profile6.png",
+        "./Image/Profile/Profile7.png",
+        "./Image/Profile/Profile8.png",
+        "./Image/Profile/Profile9.png",
+        "./Image/Profile/Profile1.png",//3
+        "./Image/Profile/Profile2.png",
+        "./Image/Profile/Profile3.png",
+        "./Image/Profile/Profile4.png",
+        "./Image/Profile/Profile5.png",
+        "./Image/Profile/Profile6.png",
+        "./Image/Profile/Profile7.png",
+        "./Image/Profile/Profile8.png",
+        "./Image/Profile/Profile9.png"
+    ]; ?>
     <div class="card mb-2">
         <?php
         $_SESSION['riwayat'][$_GET['id']]=$_GET['id'];
@@ -138,11 +169,12 @@
             $result = $conn->query($sql);
             if (mysqli_num_rows($result)>0) {
                 while($row = $result->fetch_assoc()) {
+                    $random = $profile[array_rand($profile)];
                     ?>
                     <div class="col-12">
                         <div class="d-flex align-items-center border rounded p-2 mb-2 bg-white hover-scale-sm">
                             <div class="ms-3 me-4">
-                                <img src="./image/Profile.png" width="60">
+                                <img src="<?= $random ?>" width="60">
                             </div>
                             <div class="mt-2 flex-grow-1">
                                 <h5><?=$row['nama']?> - <?=tgl_indo($row['tanggal'])?></h5>
