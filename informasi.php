@@ -1,26 +1,8 @@
 <main class="bg-body-secondary p-3">
     <?php $profile = [
-        "./Image/Profile/Guest.png",//rare
-        "./Image/Profile/Coder.png",//rare
-        "./Image/Profile/Profile1.png",//1
-        "./Image/Profile/Profile2.png",
-        "./Image/Profile/Profile3.png",
-        "./Image/Profile/Profile4.png",
-        "./Image/Profile/Profile5.png",
-        "./Image/Profile/Profile6.png",
-        "./Image/Profile/Profile7.png",
-        "./Image/Profile/Profile8.png",
-        "./Image/Profile/Profile9.png",
-        "./Image/Profile/Profile1.png",//2
-        "./Image/Profile/Profile2.png",
-        "./Image/Profile/Profile3.png",
-        "./Image/Profile/Profile4.png",
-        "./Image/Profile/Profile5.png",
-        "./Image/Profile/Profile6.png",
-        "./Image/Profile/Profile7.png",
-        "./Image/Profile/Profile8.png",
-        "./Image/Profile/Profile9.png",
-        "./Image/Profile/Profile1.png",//3
+        "./Image/Profile/Guest.png",
+        "./Image/Profile/Coder.png",
+        "./Image/Profile/Profile1.png",
         "./Image/Profile/Profile2.png",
         "./Image/Profile/Profile3.png",
         "./Image/Profile/Profile4.png",
@@ -169,7 +151,10 @@
             $result = $conn->query($sql);
             if (mysqli_num_rows($result)>0) {
                 while($row = $result->fetch_assoc()) {
-                    $random = $profile[array_rand($profile)];
+                    // $random = $profile[array_rand($profile)];
+                    $arrayrand = array_rand($profile);
+                    $random = $profile[$arrayrand];
+                    unset($profile[$arrayrand]);
                     ?>
                     <div class="col-12">
                         <div class="d-flex align-items-center border rounded p-2 mb-2 bg-white hover-scale-sm">
