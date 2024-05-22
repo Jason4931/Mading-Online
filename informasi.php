@@ -10,7 +10,26 @@
         "./Image/Profile/Profile6.png",
         "./Image/Profile/Profile7.png",
         "./Image/Profile/Profile8.png",
-        "./Image/Profile/Profile9.png"
+        "./Image/Profile/Profile9.png",
+        "./Image/Profile/Profile10.png",
+        "./Image/Profile/Profile11.png",
+        "./Image/Profile/Profile12.png",
+        "./Image/Profile/Profile13.png",
+        "./Image/Profile/Profile14.png",
+        "./Image/Profile/Profile15.png",
+        "./Image/Profile/Profile16.png",
+        "./Image/Profile/Profile17.png",
+        "./Image/Profile/Profile18.png",
+        "./Image/Profile/Profile19.png",
+        "./Image/Profile/Profile20.png",
+        "./Image/Profile/Profile21.png",
+        "./Image/Profile/Profile22.png",
+        "./Image/Profile/Profile23.png",
+        "./Image/Profile/Profile24.png",
+        "./Image/Profile/Profile25.png",
+        "./Image/Profile/Profile26.png",
+        "./Image/Profile/Profile27.png",
+        "./Image/Profile/Profile28.png"
     ]; ?>
     <div class="card mb-2">
         <?php
@@ -57,12 +76,27 @@
                         <p class="card-text">
                             <?=$row['isi']?>
                         </p>
-                        <?php if($row['file'] != NULL) { ?>
+                        <?php if($row['file'] != NULL) {
+                            // function is_image($file) {
+                            //     $imageTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+                            //     return in_array(mime_content_type($file), $imageTypes);
+                            // } ?>
                             <hr class="w-100">
                             <div class="row">
                                 <div class="col"></div>
                                 <div class="col-md-6 col-sm-9 col-12">
-                                    <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($row['file']).'" class="w-100" alt="File">'; ?>
+                                    <?php
+                                    // if (is_image($row['file'])) {
+                                    echo '<img src="data:image/jpeg;base64,'.base64_encode($row['file']).'" class="w-100" alt="File">';
+                                    // } else {
+                                    //     print_r(is_image($row['file']));
+                                    //     $filename = 'file_' . time() . '.' . pathinfo($row['file'], PATHINFO_EXTENSION);
+                                    //     $fileContent = base64_decode(stream_get_contents($row['file']));
+                                    //     file_put_contents($filename, $fileContent);
+                                    //     echo '<a href="' . $filename . '" class="w-100" download>' . basename($row['file']) . '</a>';
+                                    //     unlink($filename);
+                                    // }
+                                    ?>
                                 </div>
                                 <div class="col"></div>
                             </div>

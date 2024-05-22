@@ -46,7 +46,7 @@
                         <textarea name="isi" id="isi" hidden></textarea>
                     </div>
                     <div class="text-end mb-2">
-                        <input name="file" type="file" id="attach" class="d-none w-100 h-100" onchange="loadFileAttach(event)">
+                        <input name="file" type="file" id="attach" accept="image/*" class="d-none w-100 h-100" onchange="loadFileAttach(event)">
                         <label for="attach" class="btn cursor-pointer d-flex align-items-center justify-content-center">
                             <img src="./image/Attachment.svg" alt="attachment" width="25">
                         </label>
@@ -65,7 +65,7 @@
                             <div class="d-flex align-items-center w-100 mt-2">
                                 <div class="row w-100">
                                     <div class="col-md-auto">
-                                        <h5 class=" me-2 mt-1" style="font-weight: normal;">Nama :</h5>
+                                        <h5 class="me-2 mt-1" style="font-weight: normal;">Nama :</h5>
                                     </div>
                                     <div class="col">
                                         <div class="w-100">
