@@ -1,4 +1,36 @@
 <main class="bg-body-secondary p-3">
+    <?php $profile = [
+        "./Image/Profile/Guest.png",
+        "./Image/Profile/Coder.png",
+        "./Image/Profile/Profile1.png",
+        "./Image/Profile/Profile2.png",
+        "./Image/Profile/Profile3.png",
+        "./Image/Profile/Profile4.png",
+        "./Image/Profile/Profile5.png",
+        "./Image/Profile/Profile6.png",
+        "./Image/Profile/Profile7.png",
+        "./Image/Profile/Profile8.png",
+        "./Image/Profile/Profile9.png",
+        "./Image/Profile/Profile10.png",
+        "./Image/Profile/Profile11.png",
+        "./Image/Profile/Profile12.png",
+        "./Image/Profile/Profile13.png",
+        "./Image/Profile/Profile14.png",
+        "./Image/Profile/Profile15.png",
+        "./Image/Profile/Profile16.png",
+        "./Image/Profile/Profile17.png",
+        "./Image/Profile/Profile18.png",
+        "./Image/Profile/Profile19.png",
+        "./Image/Profile/Profile20.png",
+        "./Image/Profile/Profile21.png",
+        "./Image/Profile/Profile22.png",
+        "./Image/Profile/Profile23.png",
+        "./Image/Profile/Profile24.png",
+        "./Image/Profile/Profile25.png",
+        "./Image/Profile/Profile26.png",
+        "./Image/Profile/Profile27.png",
+        "./Image/Profile/Profile28.png"
+    ]; ?>
     <?php if($_GET['tipe']=='informasi') { ?>
         <h3 class="d-inline-block">Informasi</h3>
     <?php } else { ?>
@@ -34,11 +66,48 @@
                     </div>
                     <?php
                 } else {
+                    if(count($profile) == 0) {
+                        $profile = [
+                            "./Image/Profile/Guest.png",
+                            "./Image/Profile/Coder.png",
+                            "./Image/Profile/Profile1.png",
+                            "./Image/Profile/Profile2.png",
+                            "./Image/Profile/Profile3.png",
+                            "./Image/Profile/Profile4.png",
+                            "./Image/Profile/Profile5.png",
+                            "./Image/Profile/Profile6.png",
+                            "./Image/Profile/Profile7.png",
+                            "./Image/Profile/Profile8.png",
+                            "./Image/Profile/Profile9.png",
+                            "./Image/Profile/Profile10.png",
+                            "./Image/Profile/Profile11.png",
+                            "./Image/Profile/Profile12.png",
+                            "./Image/Profile/Profile13.png",
+                            "./Image/Profile/Profile14.png",
+                            "./Image/Profile/Profile15.png",
+                            "./Image/Profile/Profile16.png",
+                            "./Image/Profile/Profile17.png",
+                            "./Image/Profile/Profile18.png",
+                            "./Image/Profile/Profile19.png",
+                            "./Image/Profile/Profile20.png",
+                            "./Image/Profile/Profile21.png",
+                            "./Image/Profile/Profile22.png",
+                            "./Image/Profile/Profile23.png",
+                            "./Image/Profile/Profile24.png",
+                            "./Image/Profile/Profile25.png",
+                            "./Image/Profile/Profile26.png",
+                            "./Image/Profile/Profile27.png",
+                            "./Image/Profile/Profile28.png"
+                        ];
+                    }
+                    $arrayrand = array_rand($profile);
+                    $random = $profile[$arrayrand];
+                    unset($profile[$arrayrand]);
                     ?>
                     <div class="col-12">
                         <div class="d-flex align-items-center border rounded p-2 mb-2 bg-white hover-scale-sm">
                             <div class="ms-3 me-4">
-                                <img src="./image/Profile.png" width="60">
+                                <img src="<?= $random ?>" width="60">
                             </div>
                             <div class="mt-2 flex-grow-1">
                                 <h5><?=$row['nama']?> - <?=tgl_indo($row['tanggal'])?></h5>
