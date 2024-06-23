@@ -199,9 +199,11 @@
     }
     if(isset($_POST['delinfo'])) {
         $sql="DELETE FROM `informasi` WHERE `id`='$_POST[id]'";
+        $sql2="DELETE FROM `komentar` WHERE `informasi_id`='$_POST[id]'";
         $result = $conn->query($sql);
+        $result2 = $conn->query($sql2);
         unset($_SESSION['riwayat'][$_POST['id']]);
-        if ($result) {
+        if ($result && $result2) {
             header("Location: ./?menu=admin-dashboard");
         }
     }
